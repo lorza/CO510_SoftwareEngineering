@@ -27,11 +27,11 @@ public class User {
         System.out.println("User constructed");
     }
 
-    public boolean login (String username, String password, String accessRights) {
+    public boolean login (String username, String password) {
 
         // * Reaches out to authentication server and validates
         // * Assume private credentials are stored on server and not in class
-        boolean authed = AuthenticationServer.authenticate(username, password, accessRights);
+        boolean authed = AuthenticationServer.authenticate(username, password);
         setAuthStatus(authed);
 
         // * If auth is successful, set access rights that were requested

@@ -22,17 +22,17 @@ public class UserTest
     // * Invalid login credentials - expect false return value
     public void invalidLogin () {
         // * random invalid credentials - expect false
-        boolean result = user.login("ashdkasdjhas", "126739187263", "default");
+        boolean result = user.login("ashdkasdjhas", "126739187263");
         assertEquals(false, result);
         assertEquals(false, user.getAuthStatus());
         
         // * pass null values for both - expect false
-        boolean nullInput = user.login(null, null, null);
+        boolean nullInput = user.login(null, null);
         assertEquals(false, nullInput);
         assertEquals(false, user.getAuthStatus());
         
         // * pass empty strings for both - expect false
-        boolean emptyInput = user.login("", "", "");
+        boolean emptyInput = user.login("", "");
         assertEquals(false, emptyInput);
         assertEquals(false, user.getAuthStatus());
     }
@@ -41,14 +41,14 @@ public class UserTest
     // * Login with valid credentials & Check authentication status
     // * Expect successful login and true authStatus
     public void validLogin () {
-        boolean result = user.login("jimmy", "securepassword123", "default");
+        boolean result = user.login("jimmy", "securepassword123");
         assertEquals(true, result);
         assertEquals(true, user.getAuthStatus());
     }
 
     // * Login with valid credentials but pass in invalid access level
     public void validLoginInvalidAccess () {
-        boolean result = user.login("jimmy", "securepassword123", "admin");
+        boolean result = user.login("jimmy", "securepassword123");
         assertEquals(false, result);
         assertEquals(false, user.getAuthStatus());
     }
@@ -56,7 +56,7 @@ public class UserTest
     @Test
     // * Logout. Valid login then check logout. Expect true, false authenticated and empty string for accessRights
     public void logout () {
-        boolean loginRes = user.login("jimmy", "securepassword123", "default");
+        boolean loginRes = user.login("jimmy", "securepassword123");
 
         // * Was login valid?
         assertEquals(true, loginRes);

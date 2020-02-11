@@ -24,13 +24,13 @@ public abstract class AuthenticationServer {
     private static String               valid_username  = "jimmy";
     private static String               valid_password  = "securepassword123";
     private static String               access_level    = "default";
-    private static ArrayList<String>    authLog         = new ArrayList<String>();
+    private static ArrayList<String>    authLog         = new ArrayList<String>(); // * Database
 
-    public static boolean authenticate (String username, String pass, String accessRights) {
+    public static boolean authenticate (String username, String pass) {
         // * Add authentication attempt 
         Timestamp ts = new Timestamp(System.currentTimeMillis());
 
-        if (username == valid_username && pass == valid_password && access_level == accessRights) {
+        if (username == valid_username && pass == valid_password) {
             authLog.add("Authentication attempt at: " + ts + " - credentials: " + username + " " + pass + " (success)");
             return true;
         } else {
